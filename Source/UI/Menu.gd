@@ -29,4 +29,4 @@ func _on_MenuButton_pressed()->void:
 
 func _on_ExitButton_pressed()->void:
 	pause_button.visible = not pause_button.visible;
-	# get_tree().quit();
+	get_tree().quit();

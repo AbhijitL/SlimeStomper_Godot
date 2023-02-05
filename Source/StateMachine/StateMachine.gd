@@ -11,9 +11,11 @@ onready var _state_name := state.name;
 
 func _init()->void:
 	add_to_group("state_machine");
+	pass;
 
 func _ready()->void:
 	yield(owner,"ready");
+	add_to_group("state_machine");
 	state.enter();
 
 func _unhandled_input(event: InputEvent)->void:

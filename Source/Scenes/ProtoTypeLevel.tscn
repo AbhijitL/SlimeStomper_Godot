@@ -15,54 +15,56 @@ cell_size = 0.3
 cell_height = 0.1
 agent_radius = 1.0
 
-[node name="ProtoTypeLevel" type="Spatial"]
+[node name="ProtoTypeLevel" type="Node"]
 
-[node name="UI" parent="." instance=ExtResource( 3 )]
+[node name="ProtoTypeLevel" type="Spatial" parent="."]
 
-[node name="DebugPanel" parent="UI/DebugDock/VBoxContainer" index="0"]
+[node name="UI" parent="ProtoTypeLevel" instance=ExtResource( 3 )]
+
+[node name="DebugPanel" parent="ProtoTypeLevel/UI/DebugDock/VBoxContainer" index="0"]
 margin_bottom = 100.0
 reference_path = NodePath("../../../../Player/StateMachine/Move")
 properties = PoolStringArray( "velocity" )
 
-[node name="DebugPanel2" parent="UI/DebugDock/VBoxContainer" index="1"]
+[node name="DebugPanel2" parent="ProtoTypeLevel/UI/DebugDock/VBoxContainer" index="1"]
 margin_top = 104.0
 margin_bottom = 204.0
 reference_path = NodePath("../../../../Player/StateMachine")
 properties = PoolStringArray( "_state_name" )
 
-[node name="Label" parent="UI/DebugDock/VBoxContainer" index="2"]
+[node name="Label" parent="ProtoTypeLevel/UI/DebugDock/VBoxContainer" index="2"]
 margin_top = 208.0
 margin_bottom = 222.0
 
-[node name="DebugPanel3" parent="UI/DebugDock/VBoxContainer" index="3"]
+[node name="DebugPanel3" parent="ProtoTypeLevel/UI/DebugDock/VBoxContainer" index="3"]
 margin_top = 226.0
 margin_bottom = 326.0
 reference_path = NodePath("../../../../EnemyBase/StateMachine/Move")
 properties = PoolStringArray( "mov_vec", "transform_", "is_target_reachable_", "distance_to_target_", "enemy_detected" )
 
-[node name="DebugPanel4" parent="UI/DebugDock/VBoxContainer" index="4"]
+[node name="DebugPanel4" parent="ProtoTypeLevel/UI/DebugDock/VBoxContainer" index="4"]
 margin_top = 330.0
 margin_bottom = 430.0
 reference_path = NodePath("../../../../EnemyBase/StateMachine")
 properties = PoolStringArray( "_state_name" )
 
-[node name="Environment" type="Node" parent="."]
+[node name="Environment" type="Node" parent="ProtoTypeLevel"]
 
-[node name="DirectionalLight" type="DirectionalLight" parent="Environment"]
+[node name="DirectionalLight" type="DirectionalLight" parent="ProtoTypeLevel/Environment"]
 transform = Transform( 0.768012, -0.455237, 0.450462, 0.216939, 0.846711, 0.485817, -0.602573, -0.27539, 0.749043, 0, 0, 0 )
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ProtoTypeLevel/Environment"]
 environment = ExtResource( 5 )
 
-[node name="Level" type="Spatial" parent="."]
+[node name="Level" type="Spatial" parent="ProtoTypeLevel"]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
 
-[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Level"]
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="ProtoTypeLevel/Level"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91755, 2.25029, -2.62572 )
 navmesh = SubResource( 1 )
 
-[node name="GridMap" type="GridMap" parent="Level/NavigationMeshInstance"]
+[node name="GridMap" type="GridMap" parent="ProtoTypeLevel/Level/NavigationMeshInstance"]
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0.204201, 0.0686188, -0.294861 )
 mesh_library = ExtResource( 4 )
 cell_size = Vector3( 3.95, 0.5, 3.95 )
@@ -77,20 +79,20 @@ __meta__ = {
 "_editor_floor_": Vector3( 1, 1, 0 )
 }
 
-[node name="Camera" parent="." instance=ExtResource( 2 )]
+[node name="Camera" parent="ProtoTypeLevel" instance=ExtResource( 2 )]
 transform = Transform( 1, -0.000591808, 0.000299385, 0, 0.451407, 0.892318, -0.000663225, -0.892318, 0.451407, 1.961, 43.613, 17.877 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="ProtoTypeLevel" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27538, 5.64637, 2.82892 )
 
-[node name="EnemyBase" parent="." instance=ExtResource( 6 )]
+[node name="EnemyBase" parent="ProtoTypeLevel" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2673, 16.7279, 2.96456 )
 
-[node name="TransitionDoor" parent="." instance=ExtResource( 7 )]
+[node name="TransitionDoor" parent="ProtoTypeLevel" instance=ExtResource( 7 )]
 transform = Transform( -0.0333471, 0, 0.999444, 0, 1, 0, -0.999444, 0, -0.0333471, -52.2007, 7.48836, -3.72294 )
 change_to_scene = "res://Source/Scenes/MainMenu.tscn"
 
-[editable path="UI"]
-[editable path="UI/DebugDock"]
-[editable path="Player"]
-[editable path="EnemyBase"]
+[editable path="ProtoTypeLevel/UI"]
+[editable path="ProtoTypeLevel/UI/DebugDock"]
+[editable path="ProtoTypeLevel/Player"]
+[editable path="ProtoTypeLevel/EnemyBase"]

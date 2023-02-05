@@ -5,12 +5,14 @@ onready var camera : Camera = $CameraShake;
 export var offset : Vector3 = Vector3(250,0,250);
 export var player_range : Vector3  = Vector3(400,0.0,400);
 
+
 onready var player_reference : Player;
 
 var is_active : bool = true;
 
 func _ready():
 	player_reference = get_tree().get_nodes_in_group("Player")[0];
+	# player_reference = self;
 	Events.connect("camera_shake",self,"_On_Camera_shake");
 
 func _On_Camera_shake(value)->void:

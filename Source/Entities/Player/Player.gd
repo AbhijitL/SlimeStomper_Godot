@@ -14,6 +14,7 @@ var is_active : bool = true setget set_is_active;
 
 
 func _ready():
+	yield(owner,"ready");
 	if ground_check:
 		ground_check.set_as_toplevel(true);
 
