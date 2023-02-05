@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Source/Entities/Environment/TransitionDoor.gd" type="Script" id=1]
+[ext_resource path="res://Source/Entities/Environment/Glow_mat.tres" type="Material" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1, 1.29578 )
+
+[node name="TransitionDoor" type="Spatial"]
+script = ExtResource( 1 )
+change_to_scene = "res://Source/Scenes/Spatial.tscn"
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 7.22, 0, 0, 0, 5.06, 0, 0, 0, 0.71, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Area"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="MeshInstance/Area" to="." method="_on_Area_body_entered"]

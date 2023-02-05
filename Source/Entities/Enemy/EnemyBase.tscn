@@ -1,0 +1,122 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Source/StateMachine/StateMachine.gd" type="Script" id=1]
+[ext_resource path="res://Source/Entities/Enemy/States/Move.gd" type="Script" id=2]
+[ext_resource path="res://Source/Entities/Enemy/Enemy.gd" type="Script" id=3]
+[ext_resource path="res://Source/Entities/Enemy/States/Idle.gd" type="Script" id=4]
+[ext_resource path="res://Source/Entities/Enemy/States/Attack.gd" type="Script" id=5]
+[ext_resource path="res://Source/Entities/Enemy/States/Wander.gd" type="Script" id=6]
+[ext_resource path="res://Source/Entities/Enemy/States/Air.gd" type="Script" id=7]
+[ext_resource path="res://Source/Entities/Enemy/States/Die.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Models/SlimeEnemy/SlimeEnemy.tscn" type="PackedScene" id=9]
+
+[sub_resource type="SphereShape" id=8]
+radius = 1.47195
+
+[sub_resource type="SphereShape" id=3]
+radius = 8.0
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.7, 0.4, 0.7 )
+
+[sub_resource type="CylinderShape" id=7]
+height = 0.193605
+radius = 3.0
+
+[sub_resource type="SphereMesh" id=4]
+radius = 0.5
+height = 1.0
+
+[node name="EnemyBase" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource( 3 )
+
+[node name="NavigationAgent" type="NavigationAgent" parent="."]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
+path_max_distance = 4.0
+avoidance_enabled = true
+radius = 50.0
+time_horizon = 8.0
+
+[node name="NavigationObstacle" type="NavigationObstacle" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 8 )
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="SlimeEnemy" parent="Pivot" instance=ExtResource( 9 )]
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, -1.286, 0 )
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="WanderTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 1 )
+initial_state = NodePath("Move/Idle")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource( 2 )
+
+[node name="Idle" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 4 )
+
+[node name="Attack" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 5 )
+
+[node name="Wander" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 6 )
+
+[node name="Die" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 8 )
+
+[node name="Air" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 7 )
+
+[node name="ObservableArea" type="Area" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="ObservableArea"]
+shape = SubResource( 3 )
+
+[node name="PlayerHitArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05867, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerHitArea"]
+shape = SubResource( 5 )
+
+[node name="EnemyHitArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0852, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="EnemyHitArea"]
+shape = SubResource( 6 )
+
+[node name="AttackArea" type="Area" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="AttackArea"]
+shape = SubResource( 7 )
+
+[node name="point_to" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5327 )
+mesh = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="navigation_finished" from="NavigationAgent" to="StateMachine/Move/Wander" method="_on_NavigationAgent_navigation_finished"]
+[connection signal="body_entered" from="ObservableArea" to="." method="_on_ObservableArea_body_entered"]
+[connection signal="body_exited" from="ObservableArea" to="." method="_on_ObservableArea_body_exited"]
+[connection signal="area_entered" from="EnemyHitArea" to="." method="_on_EnemyHitArea_area_entered"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
+[connection signal="tween_all_completed" from="Tween" to="StateMachine/Move/Attack" method="_on_Tween_tween_all_completed"]

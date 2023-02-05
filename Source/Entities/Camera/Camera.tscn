@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Source/Entities/Camera/CameraRig.gd" type="Script" id=1]
+[ext_resource path="res://Source/Entities/Camera/CameraShake.gd" type="Script" id=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 10
+octaves = 6
+
+[node name="CameraRig" type="Position3D"]
+script = ExtResource( 1 )
+
+[node name="CameraShake" type="Camera" parent="."]
+current = true
+script = ExtResource( 2 )
+noise = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="CameraShake"]
+wait_time = 0.7
+one_shot = true

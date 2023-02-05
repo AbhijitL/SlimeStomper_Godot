@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Source/StateMachine/StateMachine.gd" type="Script" id=1]
+[ext_resource path="res://Source/Entities/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Source/Entities/Player/States/Idle.gd" type="Script" id=3]
+[ext_resource path="res://Source/Entities/Player/States/Air.gd" type="Script" id=4]
+[ext_resource path="res://Source/Entities/Player/States/Run.gd" type="Script" id=5]
+[ext_resource path="res://Source/Entities/Player/States/Move.gd" type="Script" id=6]
+[ext_resource path="res://Source/Entities/Player/States/Hit.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Models/Slime/Slime.tscn" type="PackedScene" id=9]
+
+[sub_resource type="CylinderShape" id=4]
+height = 2.14061
+radius = 1.57672
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.8, 0.3, 0.8 )
+
+[node name="Player" type="KinematicBody" groups=["Player"]]
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 4 )
+
+[node name="GroundCheck" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.567, 0 )
+enabled = true
+cast_to = Vector3( 0, -1.2, 0 )
+collision_mask = 4
+debug_shape_custom_color = Color( 0.921569, 1, 0, 1 )
+debug_shape_thickness = 5
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="Slime" parent="Pivot" instance=ExtResource( 9 )]
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, -1.45717, 0 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 1 )
+initial_state = NodePath("Move/Idle")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+max_speed_default = 10.2
+
+[node name="Air" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 4 )
+
+[node name="Idle" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 3 )
+
+[node name="Run" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 5 )
+
+[node name="Hit" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 8 )
+
+[node name="EnemyHitArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25417, 0 )
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="EnemyHitArea"]
+shape = SubResource( 2 )
+
+[node name="PlayerHitArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.986663, 0 )
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerHitArea"]
+shape = SubResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="area_entered" from="PlayerHitArea" to="." method="_on_PlayerHitArea_area_entered"]
+[connection signal="tween_all_completed" from="Tween" to="StateMachine/Move/Hit" method="_on_Tween_tween_all_completed"]
