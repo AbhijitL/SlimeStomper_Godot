@@ -45,3 +45,4 @@ func jump():
 	if owner.is_on_floor() and Input.is_action_just_pressed("jump"):
 		get_parent().velocity.y = jump_impulse;
 		owner.slime_skin.play("Jump");
+		Events.emit_signal("camera_shake",0.4);
