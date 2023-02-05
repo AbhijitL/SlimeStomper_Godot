@@ -6,6 +6,7 @@ signal enemy_detected(value);
 signal attack_enemy;
 signal dead;
 
+export var enemy_health : int = 1;
 
 var player_reference : Player;
 onready var pivot = $Pivot;

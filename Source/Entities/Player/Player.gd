@@ -10,10 +10,15 @@ onready var tween : Tween = $Tween;
 onready var slime_skin : = $Pivot/Slime;
 
 var is_active : bool = true setget set_is_active;
+var player_health : int = 0;
 
 
 func _ready():
 	yield(owner,"ready");
+	Events.connect("player_health_change",self, "_On_player_health_change");
+
+func _On_player_health_change(health,previous_health)->void:
+	player_health = health;
 
 func set_is_active(value:bool)->void:
 	is_active = value;
