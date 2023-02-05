@@ -11,7 +11,7 @@ var frame = 0;
 export var last = 14;
 
 onready var easing = Easing.new(0.45);
-onready var audio : AudioStreamPlayer2D = $Control/AudioStreamPlayer2D;
+onready var audio : AudioStreamPlayer = $Control/AudioStreamPlayer2D;
 onready var image := $Control/ColorRect;
 onready var mat : ShaderMaterial = $Control/ColorRect.material;
 

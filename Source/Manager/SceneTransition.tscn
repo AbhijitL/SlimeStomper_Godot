@@ -26,5 +26,5 @@ material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource( 4 )
