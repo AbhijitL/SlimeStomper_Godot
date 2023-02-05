@@ -40,7 +40,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2176, 6.56698, -25.4839 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.9537, 0 )
-move_radius = 4.0
 
 [node name="CameraRig" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 0.701469, 0.7127, 0, -0.7127, 0.701469, 0, 36.5066, 34.8475 )
