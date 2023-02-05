@@ -4,6 +4,7 @@
 [ext_resource path="res://Source/UI/Menu.tscn" type="PackedScene" id=2]
 
 [node name="UI" type="CanvasLayer"]
+visible = false
 
 [node name="DebugDock" parent="." instance=ExtResource( 1 )]
 

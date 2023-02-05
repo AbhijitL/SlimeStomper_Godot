@@ -31,7 +31,7 @@ cell_size = 0.1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8939, 5.98293, 46.787 )
 
 [node name="CameraRig" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.99798, 0.0634818, -0.00263287, -0.0435732, 0.713984, 0.698805, 0.0462412, -0.697278, 0.715308, -16.8404, 34.7791, 65.687 )
+transform = Transform( 0.99798, 0.0634818, -0.00263287, -0.0435732, 0.713984, 0.698805, 0.0462412, -0.697278, 0.715308, -16.8404, 22.5807, 55.7703 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
 navmesh = SubResource( 3 )
@@ -46,7 +46,16 @@ mesh = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="EnemyBase" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.70071, 9.1529, 42.4693 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.77163, 9.1529, 42.4693 )
+
+[node name="EnemyBase2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95583, 9.1529, 42.4693 )
+
+[node name="EnemyBase3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95583, 9.1529, 48.4693 )
+
+[node name="EnemyBase4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.04417, 9.1529, 48.4693 )
 
 [node name="TransitionDoor" parent="." instance=ExtResource( 4 )]
 transform = Transform( -0.19545, 0, -0.980714, 0, 1, 0, 0.980714, 0, -0.19545, -21.9651, 5.89885, 0 )
