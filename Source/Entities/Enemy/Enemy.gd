@@ -65,3 +65,22 @@ func _on_AttackArea_body_entered(body:Node):
 func _on_AttackArea_body_exited(body:Node):
 	if body is Player:
 		is_attacking = false;
+
+
+func _on_PlayerHitArea_area_entered(area:Area):
+	if area.name == "EnemyHitArea":
+		_tween_to_random_loc();
+
+func _get_random_pos_on_xz_circle(center: Vector3,radius:float = 2)->Vector3:
+	var angle : float = rand_range(0,2*PI);
+	var pos : Vector3 = center + Vector3(cos(angle),0,sin(angle)) * radius;
+	return pos;
+
+func _tween_to_random_loc()->void:
+	var current_pos: Vector3 = global_transform.origin;
+	var to_pos : Vector3 = _get_random_pos_on_xz_circle(current_pos,2);
+
+	tween.interpolate_property(self,"translation:x",current_pos.x,to_pos.x,0.5,Tween.TRANS_LINEAR,Tween.EASE_IN);
+	tween.interpolate_property(self,"translation:z",current_pos.z,to_pos.z,0.5,Tween.TRANS_LINEAR,Tween.EASE_IN);
+	tween.start();
+

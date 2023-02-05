@@ -116,6 +116,7 @@ mesh = SubResource( 4 )
 [connection signal="navigation_finished" from="NavigationAgent" to="StateMachine/Move/Wander" method="_on_NavigationAgent_navigation_finished"]
 [connection signal="body_entered" from="ObservableArea" to="." method="_on_ObservableArea_body_entered"]
 [connection signal="body_exited" from="ObservableArea" to="." method="_on_ObservableArea_body_exited"]
+[connection signal="area_entered" from="PlayerHitArea" to="." method="_on_PlayerHitArea_area_entered"]
 [connection signal="area_entered" from="EnemyHitArea" to="." method="_on_EnemyHitArea_area_entered"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
