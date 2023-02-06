@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Models/Dungeon/DungeonTileSetConfi.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://Source/Entities/Environment/TransitionDoor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Source/Entities/Environment/GameCompleteGate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/EnvironmentData/WorldLevelProto.tres" type="Environment" id=4]
 [ext_resource path="res://Source/Entities/Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Source/Entities/Camera/Camera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Fonts/SlimeBox-GWMD.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/UI/Theme.tres" type="Theme" id=8]
+[ext_resource path="res://Source/Scenes/GameLevelSelector.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
@@ -16,6 +18,7 @@ font_data = ExtResource( 7 )
 font_data = ExtResource( 7 )
 
 [node name="GameLevelSelector" type="Spatial"]
+script = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53.6654, 6.7602, 8.42135 )
@@ -39,6 +42,7 @@ __meta__ = {
 
 [node name="TransitionDoor1" parent="Level/Transitions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.1445, 6.64918, 13.1388 )
+change_to_scene = "res://Source/Scenes/TemplateLevel.tscn"
 
 [node name="TransitionDoor2" parent="Level/Transitions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5702, 6.64918, 13.1388 )
@@ -103,6 +107,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -88.95,
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -104.958, 0, 1.22987 )
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="LevelUI" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -171,3 +176,12 @@ text = "Quit"
 
 [node name="CameraRig" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 0.489382, 0.872069, 0, -0.872069, 0.489382, -3.05625, 39.6427, 23.5193 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Node"]
+transform = Transform( 0.540706, -0.506323, 0.67177, -0.351904, 0.589196, 0.727332, -0.764069, -0.629671, 0.140405, 0, 35.8987, 0 )
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node"]
+environment = ExtResource( 4 )
