@@ -16,8 +16,10 @@ func _dead_procedure()->void:
 	owner.add_child(timer);
 	timer.start(1);
 
-	var health = owner.enemy_health - 1 if owner.enemy_health > 1 else owner.enemy_health;
-	Events.emit_signal("enemy_kill_change", health, health);
+	var prev_health = owner.enemy_health;
+	var health = 1;
+	print("ENemy dead emit"+ str(health));
+	Events.emit_signal("enemy_kill_change", health, prev_health);
 
 func _On_timer_timeout()->void:
 	owner.queue_free();

@@ -7,6 +7,7 @@ onready var time_label : Label = $Control/MarginContainer/HBoxContainer/VBoxCont
 var time : float = 0.0;
 
 var time_started : bool = false;
+var point: int = 0;
 
 func _input(event):
 	if event.is_action_pressed("menu_open"):
@@ -20,7 +21,8 @@ func _ready():
 func _On_player_health_change(health,previous_health)->void:
 	player_health_label.text = str(health) + " hp";
 
-func _On_enemy_kill_change(point,previous_point)->void:
+func _On_enemy_kill_change(value,previous_value)->void:
+	point += value;
 	point_label.text = str(point)+" $";
 	if point == 1:
 		time_started = true;
@@ -39,3 +41,9 @@ func _process(delta):
 
 func round_to_dec(num, digit):
     return round(num * pow(10.0, digit)) / pow(10.0, digit)
+
+
+func _exit_tree():
+	Events.disconnect("player_health_change",self,"_On_player_health_change");
+	Events.disconnect("enemy_kill_change",self,"_On_enemy_kill_change");
+	Events.disconnect("level_completed",self,"_On_level_completed");

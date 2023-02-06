@@ -9,6 +9,7 @@ extents = Vector3( 4, 4, 0.5 )
 [node name="GameCompleteGate" type="Spatial"]
 script = ExtResource( 2 )
 color_safe = Color( 0.207843, 0.435294, 0.286275, 1 )
+color_no_safe = Color( 0.435294, 0.207843, 0.227451, 1 )
 
 [node name="GateMesh" parent="." instance=ExtResource( 1 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
