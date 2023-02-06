@@ -5,7 +5,7 @@
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 2 )
-main_menu_scene_path = "res://Source/Scenes/MainMenu.tscn"
+main_menu_scene_path = "res://Source/Scenes/GameLevelSelector.tscn"
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -50,12 +50,12 @@ margin_bottom = 120.0
 rect_min_size = Vector2( 104, 40 )
 text = "Restart"
 
-[node name="MenuButton" type="Button" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
+[node name="LevelSelectorButton" type="Button" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
 margin_top = 160.0
 margin_right = 104.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 104, 40 )
-text = "Menu"
+text = "LevelSelector"
 
 [node name="ExitButton" type="Button" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
 margin_top = 240.0
@@ -66,5 +66,5 @@ text = "Exit"
 
 [connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
-[connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/LevelSelectorButton" to="." method="_on_LevelSelectorButton_pressed"]
 [connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

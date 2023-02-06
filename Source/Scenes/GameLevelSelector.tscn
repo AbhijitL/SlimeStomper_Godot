@@ -1,0 +1,173 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Models/Dungeon/DungeonTileSetConfi.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://Source/Entities/Environment/TransitionDoor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Source/Entities/Environment/GameCompleteGate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Source/Entities/Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Source/Entities/Camera/Camera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Fonts/SlimeBox-GWMD.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/UI/Theme.tres" type="Theme" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 7 )
+
+[node name="GameLevelSelector" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53.6654, 6.7602, 8.42135 )
+
+[node name="Level" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="GridMap" type="GridMap" parent="Level"]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 3.95, 0.5, 3.95 )
+cell_scale = 2.0
+data = {
+"cells": PoolIntArray( 1, 1, 0, 2, 1, 5, 5, 1, 0, 9, 1, 0, 13, 1, 1441792, 65509, 1, 0, 65513, 1, 0, 65517, 1, 0, 65521, 1, 0, 65525, 1, 0, 65529, 1, 0, 65533, 1, 0, 786435, 1, 1441806, 786439, 1, 1441806, 786443, 1, 1441806, 786447, 1, 1441807, 851967, 1, 1441806, 917475, 1, 1441806, 917479, 1, 1441806, 917483, 1, 1441806, 917487, 1, 1441806, 917491, 1, 1441806, 917495, 1, 1441806, 917499, 1, 1441806, 196623, 3, 655369, 327651, 3, 655369, 786435, 3, 12, 786443, 3, 12, 851941, 3, 15, 851947, 3, 12, 851955, 3, 12, 851963, 3, 12, 262155, 65531, 9, 327651, 65531, 655369, 786435, 65531, 655371, 786441, 65531, 655374, 851941, 65531, 655374, 851947, 65531, 655371, 851955, 65531, 655371, 851963, 65531, 655371, 1, 65533, 0, 5, 65533, 0, 9, 65533, 0, 13, 65533, 1441799, 65509, 65533, 0, 65513, 65533, 0, 65517, 65533, 0, 65521, 65533, 0, 65525, 65533, 0, 65529, 65533, 0, 65533, 65533, 5, 262157, 65533, 1441810, 851939, 65533, 1441806, 196611, 65535, 655369, 196615, 65535, 655369, 196619, 65535, 655369, 262139, 65535, 655369, 262143, 65535, 655369, 262159, 65535, 655369, 327651, 65535, 655369, 327655, 65535, 655369, 327659, 65535, 655369, 327663, 65535, 655369, 327667, 65535, 655369, 327671, 65535, 655369 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 4, 0 )
+}
+
+[node name="Transitions" type="Spatial" parent="Level"]
+
+[node name="TransitionDoor1" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.1445, 6.64918, 13.1388 )
+
+[node name="TransitionDoor2" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5702, 6.64918, 13.1388 )
+
+[node name="TransitionDoor3" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6338, 6.64918, 13.1388 )
+
+[node name="TransitionDoor4" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76934, 6.64918, 13.1388 )
+
+[node name="TransitionDoor5" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85234, 6.64918, 13.1388 )
+
+[node name="TransitionDoor6" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5776, 6.64918, 13.1388 )
+
+[node name="TransitionDoor7" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6758, 6.64918, 13.1388 )
+
+[node name="TransitionDoor8" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.4526, 6.64918, 13.1388 )
+
+[node name="TransitionDoor9" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -72.9982, 6.64918, 13.1388 )
+
+[node name="TransitionDoor10" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -88.7, 6.64918, 13.1388 )
+
+[node name="TransitionDoor11" parent="Level/Transitions" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -104.936, 6.64918, 13.1388 )
+
+[node name="LevelLock" type="Spatial" parent="Level"]
+
+[node name="GameCompleteGate1" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.5899, 0, 1.22987 )
+
+[node name="GameCompleteGate2" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 21.9306, 0, 1.22987 )
+
+[node name="GameCompleteGate3" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.65895, 0, 1.22987 )
+
+[node name="GameCompleteGate4" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.0598, 0, 1.22987 )
+
+[node name="GameCompleteGate5" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -25.876, 0, 1.22987 )
+
+[node name="GameCompleteGate6" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -41.6192, 0, 1.22987 )
+
+[node name="GameCompleteGate7" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -57.2147, 0, 1.22987 )
+
+[node name="GameCompleteGate8" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -73.4266, 0, 1.22987 )
+
+[node name="GameCompleteGate9" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -88.95, 0, 1.22987 )
+
+[node name="GameCompleteGate10" parent="Level/LevelLock" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -104.958, 0, 1.22987 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="LevelUI" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 8 )
+
+[node name="Upper" type="Control" parent="UI/LevelUI"]
+anchor_right = 1.0
+margin_bottom = 136.0
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/LevelUI/Upper"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="UI/LevelUI/Upper/CenterContainer"]
+margin_left = 237.0
+margin_top = 28.0
+margin_right = 787.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 550, 80 )
+custom_fonts/font = SubResource( 1 )
+text = "Slime Stomper"
+align = 2
+valign = 1
+
+[node name="Buttom" type="Control" parent="UI/LevelUI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -156.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/LevelUI/Buttom"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = 22.0
+margin_bottom = 75.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "A game by Abhijit Leihaorambam."
+
+[node name="SourceButton" type="Button" parent="UI/LevelUI/Buttom"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -101.0
+margin_top = -64.0
+margin_right = 100.0
+margin_bottom = -24.0
+rect_min_size = Vector2( 0, 40 )
+focus_mode = 1
+text = "Project source"
+
+[node name="QuitButton" type="Button" parent="UI/LevelUI/Buttom"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -64.0
+margin_right = -39.0
+margin_bottom = -24.0
+rect_min_size = Vector2( 0, 40 )
+text = "Quit"
+
+[node name="CameraRig" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 0.489382, 0.872069, 0, -0.872069, 0.489382, -3.05625, 39.6427, 23.5193 )

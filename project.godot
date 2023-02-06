@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Slime Stomper"
-run/main_scene="res://Source/Scenes/ProtoTypeLevel.tscn"
+run/main_scene="res://Source/Scenes/GameLevelSelector.tscn"
 config/icon="res://icon.png"
 
 [autoload]

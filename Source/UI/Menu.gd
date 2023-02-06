@@ -5,7 +5,7 @@ export var main_menu_scene_path : String;
 # buttons
 onready var continue_button : = $Control/PauseMenu/CenterContainer/VBoxContainer/ContinueButton;
 onready var restart_button : = $Control/PauseMenu/CenterContainer/VBoxContainer/RestartButton;
-onready var menu_button : = $Control/PauseMenu/CenterContainer/VBoxContainer/MenuButton;
+onready var menu_button : = $Control/PauseMenu/CenterContainer/VBoxContainer/LevelSelectorButton;
 onready var exit_button : = $Control/PauseMenu/CenterContainer/VBoxContainer/ExitButton;
 
 onready var pause_button := $Control/PauseMenu;
@@ -23,7 +23,7 @@ func _on_RestartButton_pressed()->void:
 	pause_button.visible = not pause_button.visible;
 	Events.emit_signal("transition_to",get_tree().current_scene.filename);
 
-func _on_MenuButton_pressed()->void:
+func _on_LevelSelectorButton_pressed()->void:
 	pause_button.visible = not pause_button.visible;
 	Events.emit_signal("transition_to",main_menu_scene_path);
 
