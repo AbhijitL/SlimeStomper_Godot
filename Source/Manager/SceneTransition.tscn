@@ -19,12 +19,14 @@ script = ExtResource( 3 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 modulate = Color( 0.764706, 0.882353, 0.905882, 1 )
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource( 4 )

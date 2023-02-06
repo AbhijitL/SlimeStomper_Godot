@@ -177,11 +177,11 @@ text = "Quit"
 [node name="CameraRig" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 0.489382, 0.872069, 0, -0.872069, 0.489382, -3.05625, 39.6427, 23.5193 )
 
-[node name="Node" type="Node" parent="."]
+[node name="Light" type="Node" parent="."]
 
-[node name="DirectionalLight" type="DirectionalLight" parent="Node"]
+[node name="DirectionalLight" type="DirectionalLight" parent="Light"]
 transform = Transform( 0.540706, -0.506323, 0.67177, -0.351904, 0.589196, 0.727332, -0.764069, -0.629671, 0.140405, 0, 35.8987, 0 )
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Node"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Light"]
 environment = ExtResource( 4 )
