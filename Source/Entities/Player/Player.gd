@@ -2,6 +2,7 @@ extends KinematicBody
 class_name Player
 
 export var move_radius: float= 4;
+export var player_health_default = 1;
 
 onready var pivot = $Pivot
 onready var collider : CollisionShape = $CollisionShape;
@@ -10,12 +11,14 @@ onready var tween : Tween = $Tween;
 onready var slime_skin : = $Pivot/Slime;
 
 var is_active : bool = true setget set_is_active;
-var player_health : int = 0;
+var player_health : int = player_health_default;
+var prev_player_health : int=0;
 
 
 func _ready():
 	yield(owner,"ready");
 	Events.connect("player_health_change",self, "_On_player_health_change");
+	Events.emit_signal("player_health_change",player_health,player_health);
 
 func _On_player_health_change(health,previous_health)->void:
 	player_health = health;

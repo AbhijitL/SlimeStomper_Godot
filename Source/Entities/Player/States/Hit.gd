@@ -8,9 +8,11 @@ func enter(msg: Dictionary = {}) -> void:
 	owner.slime_skin.play("squash");
 	Events.emit_signal("camera_shake",0.5);
 
-	var prev_health = owner.player_health;
-	var health = owner.player_health - 1 ;
-	Events.emit_signal("player_health_change",health,prev_health);
+	owner.prev_player_health = owner.player_health;
+	print(owner.player_health)
+	owner.player_health = owner.player_health - 1;
+	print(owner.player_health)
+	Events.emit_signal("player_health_change", owner.player_health, owner.prev_player_health);
 
 
 func exit() -> void:

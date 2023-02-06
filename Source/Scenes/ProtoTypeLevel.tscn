@@ -20,7 +20,6 @@ agent_radius = 1.0
 
 [node name="ProtoTypeLevel" type="Spatial" parent="."]
 script = ExtResource( 8 )
-player_health = 5
 
 [node name="UI" parent="ProtoTypeLevel" instance=ExtResource( 3 )]
 
