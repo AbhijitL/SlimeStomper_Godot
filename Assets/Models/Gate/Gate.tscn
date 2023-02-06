@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Models/Gate/Gate.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Source/Entities/Environment/Shaders/shield_shader.tres" type="Shader" id=2]
+[ext_resource path="res://Assets/Textures/pattern.jpg" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/color = Color( 0.435294, 0.207843, 0.227451, 1 )
+shader_param/fresnel_power = 2.0
+shader_param/edge_intensity = 2.0
+shader_param/fill_amount = 0.042
+shader_param/pulsing_strength = 0.5
+shader_param/pulsing_speed = 1.0
+shader_param/scanline_period = 0.5
+shader_param/scanline_width = 0.1
+shader_param/scanline_intensity = 0.35
+shader_param/pattern_scroll_speed = 0.025
+shader_param/pattern_uv_offset = Vector2( 6, 3 )
+shader_param/pattern_texture = ExtResource( 3 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Gate" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/1 = SubResource( 1 )

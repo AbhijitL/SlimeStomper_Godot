@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Gate.obj-b1fc72bbd07c5919ca7581edc0afdcf5.mesh"
+
+[deps]
+
+files=[ "res://.import/Gate.obj-b1fc72bbd07c5919ca7581edc0afdcf5.mesh" ]
+
+source_file="res://Assets/Models/Gate/Gate.obj"
+dest_files=[ "res://.import/Gate.obj-b1fc72bbd07c5919ca7581edc0afdcf5.mesh", "res://.import/Gate.obj-b1fc72bbd07c5919ca7581edc0afdcf5.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
