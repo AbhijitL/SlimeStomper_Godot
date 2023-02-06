@@ -17,6 +17,8 @@ func _ready():
 	Events.connect("player_health_change",self,"_On_player_health_change");
 	Events.connect("enemy_kill_change",self,"_On_enemy_kill_change");
 	Events.connect("level_completed",self,"_On_level_completed");
+	Events.connect("start_timer",self,"_On_start_timer");
+
 	if not time_started:
 		set_process(false);
 
@@ -26,7 +28,10 @@ func _On_player_health_change(health,previous_health)->void:
 func _On_enemy_kill_change(value,previous_value)->void:
 	point += value;
 	point_label.text = str(point)+" $";
-	if point == 1:
+		
+
+func _On_start_timer()->void:
+	if not time_started:
 		time_started = true;
 		set_process(true);
 
@@ -51,3 +56,4 @@ func _exit_tree():
 	Events.disconnect("player_health_change",self,"_On_player_health_change");
 	Events.disconnect("enemy_kill_change",self,"_On_enemy_kill_change");
 	Events.disconnect("level_completed",self,"_On_level_completed");
+	Events.disconnect("start_timer",self,"_On_start_timer");

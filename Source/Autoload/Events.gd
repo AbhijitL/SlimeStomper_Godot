@@ -9,3 +9,4 @@ signal player_health_change(value,previous_value);
 signal enemy_kill_change(value,previous_value);
 
 signal level_completed;
+signal start_timer;

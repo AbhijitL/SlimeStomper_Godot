@@ -42,6 +42,7 @@ func _on_ObservableArea_body_entered(body:Node):
 	if body is Player:
 		enemy_detected = true;
 		emit_signal("enemy_detected",enemy_detected);
+		Events.emit_signal("start_timer");
 
 func _on_ObservableArea_body_exited(body:Node):
 	if body is Player:
