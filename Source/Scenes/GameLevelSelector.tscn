@@ -50,6 +50,7 @@ change_to_scene = "res://Source/Scenes/Levels/Level1.tscn"
 
 [node name="TransitionDoor3" parent="Level/Transitions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6338, 6.64918, 13.1388 )
+change_to_scene = "res://Source/Scenes/Levels/Level2.tscn"
 
 [node name="TransitionDoor4" parent="Level/Transitions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76934, 6.64918, 13.1388 )
