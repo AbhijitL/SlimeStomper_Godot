@@ -2,7 +2,7 @@ extends State
 
 export var acceleration_z := 20;
 export var jump_impulse := 30;
-
+export var jump_audio : AudioStream;
 
 func unhandled_input(event: InputEvent) -> void:
 	var move = get_parent();
@@ -20,6 +20,7 @@ func enter(msg: Dictionary = {}) -> void:
 	var move = get_parent();
 	move.enter(msg);
 	move.gravity = move.gravity + acceleration_z;
+	owner.audio_player.stream = jump_audio;
 	if "impulse" in msg:
 		jump();
 
@@ -43,6 +44,7 @@ func _calculate_jump_vector(impulse:=0.0)-> Vector3:
 
 func jump():
 	if owner.is_on_floor() and Input.is_action_just_pressed("jump"):
+		owner.audio_player.play();
 		get_parent().velocity.y = jump_impulse;
 		owner.slime_skin.play("Jump");
 		Events.emit_signal("camera_shake",0.4);

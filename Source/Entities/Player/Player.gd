@@ -9,6 +9,7 @@ onready var collider : CollisionShape = $CollisionShape;
 onready var _state_machine: StateMachine = $StateMachine;
 onready var tween : Tween = $Tween;
 onready var slime_skin : = $Pivot/Slime;
+onready var audio_player : AudioStreamPlayer3D = $PlayerAudio3D;
 
 var is_active : bool = true setget set_is_active;
 var player_health : int = player_health_default;
