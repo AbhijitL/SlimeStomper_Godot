@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://Source/Entities/Player/Player.gd"
 }, {
 "base": "Node",
+"class": "SaveManager",
+"language": "GDScript",
+"path": "res://Source/Manager/SaveManager.gd"
+}, {
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://Source/StateMachine/State.gd"
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "Easing": "",
 "Enemy": "",
 "Player": "",
+"SaveManager": "",
 "State": "",
 "StateMachine": ""
 }
