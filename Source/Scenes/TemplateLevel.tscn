@@ -7,7 +7,7 @@
 [ext_resource path="res://Source/Entities/Enemy/EnemyBase.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Source/Entities/Environment/TransitionDoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/EnvironmentData/WorldLevelProto.tres" type="Environment" id=7]
-[ext_resource path="res://Source/Scenes/GameManager.gd" type="Script" id=8]
+[ext_resource path="res://Source/Scenes/LevelManager.gd" type="Script" id=8]
 [ext_resource path="res://Source/Entities/Environment/GameCompleteGate.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationMesh" id=1]
