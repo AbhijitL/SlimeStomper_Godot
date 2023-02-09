@@ -1,6 +1,6 @@
 extends Spatial
 
-var level : int = 0;
+var level : int;
 
 onready var enemies = $Enemies;
 
@@ -15,7 +15,8 @@ func _ready():
 
 func get_level_name()->void:
 	var level_name = self.name;
-	level = int(level_name.left(level_name.length()-1));
+	level = int(level_name.right(level_name.length()-1));
+	print("current level is", str(level));
 
 func _On_Enemy_kill_change(value,previous_value)->void:
 	print("enemy value chaned"+str(1));
