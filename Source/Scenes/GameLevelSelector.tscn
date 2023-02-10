@@ -19,6 +19,7 @@ font_data = ExtResource( 7 )
 
 [node name="GameLevelSelector" type="Spatial"]
 script = ExtResource( 9 )
+level_paths = [ "res://Source/Scenes/Levels/Level0.tscn", "res://Source/Scenes/Levels/Level1.tscn", "res://Source/Scenes/Levels/Level2.tscn" ]
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53.6654, 6.7602, 8.42135 )
@@ -42,15 +43,12 @@ __meta__ = {
 
 [node name="TransitionDoor1" parent="Level/Transitions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.1445, 6.64918, 13.1388 )
-change_to_scene = "res://Source/Scenes/Levels/Level0.tscn"
 
 [node name="TransitionDoor2" parent="Level/Transitions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5702, 6.64918, 13.1388 )
-change_to_scene = "res://Source/Scenes/Levels/Level1.tscn"
 
 [node name="TransitionDoor3" parent="Level/Transitions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6338, 6.64918, 13.1388 )
-change_to_scene = "res://Source/Scenes/Levels/Level2.tscn"
 
 [node name="TransitionDoor4" parent="Level/Transitions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76934, 6.64918, 13.1388 )
@@ -76,36 +74,36 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -88.7, 6.64918, 13.1388 )
 [node name="TransitionDoor11" parent="Level/Transitions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -104.936, 6.64918, 13.1388 )
 
-[node name="LevelLock" type="Spatial" parent="Level"]
+[node name="LevelLocks" type="Spatial" parent="Level"]
 
-[node name="GameCompleteGate1" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate1" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.5899, 0, 1.22987 )
 
-[node name="GameCompleteGate2" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate2" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 21.9306, 0, 1.22987 )
 
-[node name="GameCompleteGate3" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate3" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.65895, 0, 1.22987 )
 
-[node name="GameCompleteGate4" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate4" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.0598, 0, 1.22987 )
 
-[node name="GameCompleteGate5" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate5" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -25.876, 0, 1.22987 )
 
-[node name="GameCompleteGate6" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate6" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -41.6192, 0, 1.22987 )
 
-[node name="GameCompleteGate7" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate7" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -57.2147, 0, 1.22987 )
 
-[node name="GameCompleteGate8" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate8" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -73.4266, 0, 1.22987 )
 
-[node name="GameCompleteGate9" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate9" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -88.95, 0, 1.22987 )
 
-[node name="GameCompleteGate10" parent="Level/LevelLock" instance=ExtResource( 3 )]
+[node name="GameCompleteGate10" parent="Level/LevelLocks" instance=ExtResource( 3 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -104.958, 0, 1.22987 )
 
 [node name="UI" type="CanvasLayer" parent="."]
