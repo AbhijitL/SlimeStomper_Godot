@@ -40,6 +40,7 @@ func _On_level_completed()->void:
 
 func set_time_to_stop()->void:
 	time_started = false;
+	Events.emit_signal("timer_finished",time);
 	set_process(false);
 
 func _process(delta):
