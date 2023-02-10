@@ -6,21 +6,24 @@ onready var ui = $UI;
 onready var level_transition_doors = $Level/Transitions;
 onready var level_locks = $Level/LevelLocks;
 
+var data: Dictionary;
+
 func _ready():
+	data = GameManager.load_data();
 	_set_scene_path_to_level_transition_door();
 	_set_level_lock_unloced();
 
 
 func _set_scene_path_to_level_transition_door()->void:
 	var i : int = 0;
-	for scene in level_transition_doors.get_children():
+	for door in level_transition_doors.get_children():
 		if len(level_paths) == i:
 			return;
-		scene.change_to_scene = level_paths[i];
+		door.change_to_scene = level_paths[i];
+		door.time_label.text = "Time elapsed: " + str(data[i][0]) + "s";
 		i += 1;
 
 func _set_level_lock_unloced()->void:
-	var data: Dictionary = GameManager.load_data();
 	var i : int = 0;
 	for lock in level_locks.get_children():
 		if len(data) - 1 == i:
