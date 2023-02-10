@@ -6,7 +6,7 @@ onready var enemies = $Enemies;
 
 var no_of_enemy : int = 0;
 var point : int = 0;
-var best_time : float = 0;
+var time : float = 0;
 
 func _ready():
 	no_of_enemy = enemies.get_child_count();
@@ -15,7 +15,11 @@ func _ready():
 	get_level_name();
 	
 func _On_timer_finished(value:float)->void:
-	best_time = value;
+	var best_time : float =  GameManager.get_best_time(level);
+	if best_time < value:
+		time = best_time;
+	else:
+		time = value;
 
 func get_level_name()->void:
 	var level_name = self.name;
@@ -28,4 +32,4 @@ func _On_Enemy_kill_change(value,previous_value)->void:
 	point += value;
 	if point == no_of_enemy:
 		Events.emit_signal("level_completed");
-		GameManager.save_data(level, best_time, true);
+		GameManager.save_data(level, time, true);
