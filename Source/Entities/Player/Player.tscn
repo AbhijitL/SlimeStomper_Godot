@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Source/StateMachine/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Source/Entities/Player/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Audio/jumping.wav" type="AudioStream" id=7]
 [ext_resource path="res://Source/Entities/Player/States/Hit.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Models/Slime/Slime.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Audio/dead_effect.wav" type="AudioStream" id=10]
 
 [sub_resource type="CylinderShape" id=4]
 height = 2.14061
@@ -52,6 +53,7 @@ script = ExtResource( 5 )
 
 [node name="Hit" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 8 )
+dead_audio = ExtResource( 10 )
 
 [node name="EnemyHitArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25417, 0 )
@@ -70,7 +72,7 @@ shape = SubResource( 3 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="PlayerAudio3D" type="AudioStreamPlayer3D" parent="."]
-unit_size = 3.0
+unit_size = 5.0
 
 [connection signal="area_entered" from="PlayerHitArea" to="." method="_on_PlayerHitArea_area_entered"]
 [connection signal="tween_all_completed" from="Tween" to="StateMachine/Move/Hit" method="_on_Tween_tween_all_completed"]

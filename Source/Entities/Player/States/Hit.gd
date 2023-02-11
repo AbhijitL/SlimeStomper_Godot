@@ -2,6 +2,7 @@ extends State
 
 
 export var hit_anim_speed :float = 0.1;
+export var dead_audio : AudioStream;
 
 func enter(msg: Dictionary = {}) -> void:
 	_tween_to_random_loc();
@@ -14,6 +15,8 @@ func enter(msg: Dictionary = {}) -> void:
 		owner.player_health == 0;
 		owner.is_active = false;
 		owner.player_dead = true;
+		owner.audio_player.stream = dead_audio;
+		owner.audio_player.play();
 		Events.emit_signal("player_dead");
 		Events.emit_signal("level_completed");
 	Events.emit_signal("player_health_change", owner.player_health, owner.prev_player_health);
