@@ -30,7 +30,7 @@ func set_is_active(value:bool)->void:
 	if not collider:
 		return;
 	collider.disabled = not value;
-	self.visible = value;
+	self.visible = false;
 
 
 func _on_PlayerHitArea_area_entered(area:Area):
