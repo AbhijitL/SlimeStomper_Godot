@@ -10,10 +10,18 @@ onready var exit_button : = $Control/PauseMenu/CenterContainer/VBoxContainer/Exi
 
 onready var pause_button := $Control/PauseMenu;
 
+var player_dead : bool = false;
 
+func _ready():
+	Events.connect("player_dead",self,"_On_player_dead");
+
+func _On_player_dead():
+	player_dead = true;
+	continue_button.disabled = true;
+	pause_button.visible = true;
 
 func _input(event:InputEvent)->void:
-	if event.is_action_pressed("menu_open"):
+	if event.is_action_pressed("menu_open") and not player_dead:
 		pause_button.visible = not pause_button.visible;
 
 func _on_ContinueButton_pressed()->void:
