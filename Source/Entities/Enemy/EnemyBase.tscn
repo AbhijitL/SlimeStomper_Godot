@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Source/StateMachine/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Source/Entities/Enemy/States/Move.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Source/Entities/Enemy/States/Air.gd" type="Script" id=7]
 [ext_resource path="res://Source/Entities/Enemy/States/Die.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Models/SlimeEnemy/SlimeEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Audio/jumping.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Audio/dead_effect.wav" type="AudioStream" id=11]
 
 [sub_resource type="SphereShape" id=8]
 radius = 1.47195
@@ -73,12 +75,14 @@ script = ExtResource( 4 )
 
 [node name="Attack" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 5 )
+jump_audio = ExtResource( 10 )
 
 [node name="Wander" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 6 )
 
 [node name="Die" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 8 )
+dead_sound = ExtResource( 11 )
 
 [node name="Air" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 7 )
@@ -113,6 +117,9 @@ mesh = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="EnemyAudio3D" type="AudioStreamPlayer3D" parent="."]
+unit_size = 5.0
+
 [connection signal="navigation_finished" from="NavigationAgent" to="StateMachine/Move/Wander" method="_on_NavigationAgent_navigation_finished"]
 [connection signal="body_entered" from="ObservableArea" to="." method="_on_ObservableArea_body_entered"]
 [connection signal="body_exited" from="ObservableArea" to="." method="_on_ObservableArea_body_exited"]
@@ -121,3 +128,4 @@ mesh = SubResource( 4 )
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
 [connection signal="tween_all_completed" from="Tween" to="StateMachine/Move/Attack" method="_on_Tween_tween_all_completed"]
+[connection signal="finished" from="EnemyAudio3D" to="StateMachine/Move/Die" method="_on_EnemyAudio3D_finished"]
