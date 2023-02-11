@@ -10,10 +10,6 @@ var time_started : bool = false;
 var point: int = 0;
 var player_dead : bool = false;
 
-func _input(event):
-	if event.is_action_pressed("menu_open") and not player_dead:
-		visible = not visible;
-
 func _ready():
 	Events.connect("player_health_change",self,"_On_player_health_change");
 	Events.connect("enemy_kill_change",self,"_On_enemy_kill_change");
