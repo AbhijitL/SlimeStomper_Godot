@@ -1,6 +1,8 @@
 extends State
 
 export var jump_impulse : float = 5;
+export var jump_audio : AudioStream;
+
 const ANIM_LENGTH = 0.6;
 
 # func _ready():
@@ -19,6 +21,7 @@ func physics_process(delta):
 func enter(msg:Dictionary={})->void:
 	var move = get_parent();
 	move.enter(msg);
+	owner.audio_player.stream = jump_audio;
 	_attack(msg);
 	move.mov_vec = Vector3.ZERO;
 
@@ -44,6 +47,7 @@ func jump():
 	owner.tween.interpolate_property(owner,"translation:y",player_pos.y+jump_impulse,player_pos.y,ANIM_LENGTH/3,Tween.TRANS_QUAD,Tween.EASE_IN,ANIM_LENGTH/2);
 	owner.tween.start();
 	owner.slime_skin.play("Jump");
+	owner.audio_player.play();
 
 
 func _on_Tween_tween_all_completed():
