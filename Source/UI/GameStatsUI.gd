@@ -8,9 +8,10 @@ var time : float = 0.0;
 
 var time_started : bool = false;
 var point: int = 0;
+var player_dead : bool = false;
 
 func _input(event):
-	if event.is_action_pressed("menu_open"):
+	if event.is_action_pressed("menu_open") and not player_dead:
 		visible = not visible;
 
 func _ready():
@@ -22,6 +23,10 @@ func _ready():
 
 	if not time_started:
 		set_process(false);
+
+func _On_Player_dead()->void:
+	player_dead = true;
+	# visible = false;
 
 func _On_player_health_change(health,previous_health)->void:
 	player_health_label.text = str(health) + " hp";
