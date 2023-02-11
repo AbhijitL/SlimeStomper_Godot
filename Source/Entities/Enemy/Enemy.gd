@@ -20,6 +20,7 @@ onready var point_to = $point_to;
 onready var area_collsion_shape: = $ObservableArea/CollisionShape;
 onready var tween : Tween = $Tween;
 onready var slime_skin : = $Pivot/SlimeEnemy;
+onready var audio_player : AudioStreamPlayer3D = $EnemyAudio3D;
 
 
 var is_active : bool = true setget set_is_active;
