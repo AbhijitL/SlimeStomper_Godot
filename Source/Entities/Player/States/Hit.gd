@@ -9,10 +9,15 @@ func enter(msg: Dictionary = {}) -> void:
 	Events.emit_signal("camera_shake",0.5);
 
 	owner.prev_player_health = owner.player_health;
-	print(owner.player_health)
 	owner.player_health = owner.player_health - 1;
-	print(owner.player_health)
+	if owner.player_health <= 0:
+		owner.player_health == 0;
+		# owner.is_active = false;
+		owner.player_dead = true;
+		Events.emit_signal("player_dead");
+		Events.emit_signal("level_completed");
 	Events.emit_signal("player_health_change", owner.player_health, owner.prev_player_health);
+
 
 
 func exit() -> void:

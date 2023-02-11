@@ -29,7 +29,7 @@ func get_input_vector() -> Vector3:
 	var input_vector = Vector3.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
-	return input_vector.normalized();
+	return input_vector.normalized() if not owner.player_dead else Vector3(0,0,0);
 	
 
 static func calculate_velocity(old_velocity:Vector3,max_speed: float, delta:float, gravity: float,
