@@ -18,6 +18,7 @@ func _ready():
 	Events.connect("enemy_kill_change",self,"_On_enemy_kill_change");
 	Events.connect("level_completed",self,"_On_level_completed");
 	Events.connect("start_timer",self,"_On_start_timer");
+	Events.connect("player_dead",self,"_On_Player_dead");
 
 	if not time_started:
 		set_process(false);
@@ -29,7 +30,6 @@ func _On_enemy_kill_change(value,previous_value)->void:
 	point += value;
 	point_label.text = str(point)+" $";
 		
-
 func _On_start_timer()->void:
 	if not time_started:
 		time_started = true;
