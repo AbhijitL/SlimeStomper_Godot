@@ -12,7 +12,7 @@ func enter(msg: Dictionary = {}) -> void:
 	owner.player_health = owner.player_health - 1;
 	if owner.player_health <= 0:
 		owner.player_health == 0;
-		# owner.is_active = false;
+		owner.is_active = false;
 		owner.player_dead = true;
 		Events.emit_signal("player_dead");
 		Events.emit_signal("level_completed");
