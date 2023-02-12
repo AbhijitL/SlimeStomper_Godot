@@ -133,6 +133,7 @@ menu_open={
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Enemy"
 3d_physics/layer_3="Surroundings"
+3d_physics/layer_4="DeathFall"
 
 [physics]
 
