@@ -40,5 +40,5 @@ func _on_PlayerHitArea_area_entered(area:Area):
 
 
 func _on_EnemyHitArea_area_entered(area:Area)->void:
-	if area.name == "DeathArea":
+	if area.name == "DeathArea" and not player_dead:
 		_state_machine.transition_to("Move/Hit");
