@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Models/Dungeon/DungeonTileSetConfi.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://Source/Entities/Environment/TransitionDoor.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Fonts/SlimeBox-GWMD.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/UI/Theme.tres" type="Theme" id=8]
 [ext_resource path="res://Source/Scenes/GameLevelSelector.gd" type="Script" id=9]
+[ext_resource path="res://Source/Scenes/GameLevelSelectorUI.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
@@ -108,6 +109,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -104.95
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = -1
+script = ExtResource( 10 )
 
 [node name="LevelUI" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -185,3 +187,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Light"]
 environment = ExtResource( 4 )
+
+[connection signal="pressed" from="UI/LevelUI/Buttom/SourceButton" to="UI" method="_on_SourceButton_pressed"]
+[connection signal="pressed" from="UI/LevelUI/Buttom/QuitButton" to="UI" method="_on_QuitButton_pressed"]
