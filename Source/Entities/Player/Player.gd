@@ -37,3 +37,8 @@ func _on_PlayerHitArea_area_entered(area:Area):
 	if area.name == "PlayerHitArea":
 		_state_machine.transition_to("Move/Hit");
 		pass;
+
+
+func _on_EnemyHitArea_area_entered(area:Area)->void:
+	if area.name == "DeathArea":
+		_state_machine.transition_to("Move/Hit");

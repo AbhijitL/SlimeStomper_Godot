@@ -74,5 +74,6 @@ shape = SubResource( 3 )
 [node name="PlayerAudio3D" type="AudioStreamPlayer3D" parent="."]
 unit_size = 5.0
 
+[connection signal="area_entered" from="EnemyHitArea" to="." method="_on_EnemyHitArea_area_entered"]
 [connection signal="area_entered" from="PlayerHitArea" to="." method="_on_PlayerHitArea_area_entered"]
 [connection signal="tween_all_completed" from="Tween" to="StateMachine/Move/Hit" method="_on_Tween_tween_all_completed"]
