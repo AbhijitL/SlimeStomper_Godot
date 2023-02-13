@@ -1,5 +1,5 @@
 # Slime stomper.
-A prototype top down platformer type game made using Godot 3.5.1.It's a prototype for a game jam. 
+A prototype top down platformer type game made using Godot 3.5.1.It's a prototype for a game jam in a week. 
 
 Most of the assets are made from scratch except the UI element and font which is from a free site.
 
