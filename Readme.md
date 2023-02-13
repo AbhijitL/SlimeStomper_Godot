@@ -9,6 +9,10 @@ I may still do development even tho the game jam is already finished and i could
 Inherit the template_level and make the level design as your wish place the player anywhere,set the camera, add enemies and so on. 
 For now you have to put that level scene path to levelselector scene and the level before.
 
+# Adding more enemy.
+Since the game jam is finished i wasn't able to add more enemy. But the base_enemy can be expand by inheriting it and 
+add new behaviour states like slash attack instead of just jump attack.
+
 <img src="https://i.imgur.com/C3AxtQe.jpg" width = "480"/>
 
 <img src="https://i.imgur.com/bge0t3X.jpg" width = "480"/>
