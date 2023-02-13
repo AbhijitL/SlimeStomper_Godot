@@ -3,4 +3,4 @@ A prototype top down 3d movement game made using Godot.
 It's a prototype for a game jam.
 
 
-<img src="https://i.imgur.com/sfueG8f.mp4" width="480">
+<img src="https://media.giphy.com/media/FJzSjrv3ZuDrAKmOLd/giphy.gif" width="480">
